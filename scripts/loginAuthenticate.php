@@ -19,6 +19,8 @@
 		} else {
 			header("Location: ../login?message=Invalid%20Credentials");
 		}
+	} else {
+			header("Location: ../login?message=Invalid%20Credentials");
 	}
 
 

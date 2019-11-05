@@ -29,13 +29,16 @@
 				$row = $result->fetch_assoc();
 				self::$hash = $row['passcode'];
 
+				bhg_db_connect::close();
+
 				if(password_verify($passcode, self::$hash)) return true;
 				else return false;
 
 			} else {
+				bhg_db_connect::close();
 				return false;
 			}
-			bhg_db_connect::close();			
+						
 		}
 	} //end of bhg_authenticate
 

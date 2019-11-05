@@ -166,4 +166,41 @@
 			return $this->listOfThreads;
 		}
 	} //end of bhg_user	
+
+	/**
+	 * 
+	 */
+	class bhg_new_thread
+	{
+		private $threadTitle = "";
+		private $threadBody = "";
+		private $threadAuthor = "";
+		
+		function __construct($title, $body, $author)
+		{
+			$this->threadTitle = $title;
+			$this->threadBody = $body;
+			$this->threadAuthor = $author;
+
+			error_log("initialized Variables ". $this->threadTitle.", ".$this->threadAuthor);
+		}
+
+		function writeThread() {
+			if ($this->threadTitle === "" || $this->threadAuthor === "") return false;
+
+			bhg_db_connect::initialize();
+
+			$sql = "INSERT INTO threads (threadTitle, threadBody, threadPrimaryTag, threadAuthor, time, lastModified) VALUES ('".$this->threadTitle."', '".$this->threadBody."', 'misc', '".$this->threadAuthor."', 'time()', 'time()')";
+
+			if(!$result = bhg_db_connect::sqlQuery($sql)) {
+				error_log("Error In Write Query ".bhg_db_connect::errorMessage());
+				bhg_db_connect::close();
+				return false;
+			}
+
+			bhg_db_connect::close();
+			return true;
+
+		}
+	}
 ?>

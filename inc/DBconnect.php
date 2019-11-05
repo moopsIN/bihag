@@ -31,6 +31,10 @@ class bhg_db_connect
       self::$init = FALSE;
       mysqli_close(self::$conn);
     }
+
+    public static function errorMessage() {
+      return mysqli_error(self::$conn);
+    }
 }
 
 ?>
