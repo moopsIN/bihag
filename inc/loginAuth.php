@@ -31,12 +31,22 @@
 
 				bhg_db_connect::close();
 
-				if(password_verify($passcode, self::$hash)) return true;
-				else return false;
+				if(password_verify($passcode, self::$hash)) {
+					$login['valid'] = true;
+					$login['id'] = $userID;
+					return $login;
+				}
+				else {
+					$login['valid'] = false;
+					$login['id'] = NULL;
+					return $login;
+				}
 
 			} else {
 				bhg_db_connect::close();
-				return false;
+				$login['valid'] = false;
+				$login['id'] = NULL;
+				return $login;
 			}
 						
 		}

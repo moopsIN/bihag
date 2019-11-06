@@ -9,11 +9,12 @@
 			# code...
 		}
 
-		function initialize($user) {
+		function initialize($user, $id) {
 			self::end();
 			self::start();
 
 			$_SESSION['userName'] = $user;
+			$_SESSION['userID'] = $id;
 			$_SESSION['id'] = session_id();
 			$_SESSION['lastActive'] = time();
 			$_SESSION['validate'] = true;

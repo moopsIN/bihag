@@ -190,7 +190,7 @@
 
 			bhg_db_connect::initialize();
 
-			$sql = "INSERT INTO threads (threadTitle, threadBody, threadPrimaryTag, threadAuthor, time, lastModified) VALUES ('".$this->threadTitle."', '".$this->threadBody."', 'misc', '".$this->threadAuthor."', 'time()', 'time()')";
+			$sql = "INSERT INTO threads (threadTitle, threadBody, threadPrimaryTag, threadAuthor, time, lastModified) VALUES ('".$this->threadTitle."', '".$this->threadBody."', 'misc', '".$this->threadAuthor."', now(), now())";
 
 			if(!$result = bhg_db_connect::sqlQuery($sql)) {
 				error_log("Error In Write Query ".bhg_db_connect::errorMessage());

@@ -10,5 +10,12 @@
 
 	require_once("header.php");
 ?>
+<section>
+	<div class="container">
+		<div class="row text-center">
+			<a href="./write"><input type="button" value="Write a New Post"></a>
+		</div>
+	</div>
+</section>
 
 <?php require_once("footer.php"); ?>

@@ -13,7 +13,7 @@
 		$title = $_POST['threadTitle'];
 		$body = $_POST['threadBody'];
 
-		$newThreadHandle = new bhg_new_thread($title, $body, $_SESSION['id']);
+		$newThreadHandle = new bhg_new_thread($title, $body, $_SESSION['userID']);
 
 		$writeResult = $newThreadHandle->writeThread();
 

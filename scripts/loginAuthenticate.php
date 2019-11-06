@@ -10,10 +10,9 @@
 		
 		$isAuthentic = bhg_login::authenticate($_POST['username'], $_POST['passcode']);
 
-		if ($isAuthentic) {
-
+		if ($isAuthentic['valid']) {
 			include_once('../inc/session.php');
-			bhg_session::initialize($_POST['username']);
+			bhg_session::initialize($_POST['username'],$isAuthentic['id']);
 			header("Location:../dash");
 
 		} else {
