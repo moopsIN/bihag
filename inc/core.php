@@ -41,6 +41,29 @@
 			bhg_db_connect::close();
 		}
 
+		function get_thread_list($user) {
+
+			bhg_db_connect::initialize();
+
+			$postListArray = array();
+
+			if ($user === "all") {
+				$sql = "SELECT * FROM threads ORDER BY time DESC";				
+			} else {
+				$sql = "SELECT * FROM threads WHERE threadAuthor='". $user ."' ORDER BY time DESC";
+			}
+
+			$result = bhg_db_connect::sqlQuery($sql);
+
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+						array_push($postListArray, $row);
+					}
+				}
+
+			return $postListArray;
+		}
+
 	} // end of bhg_list_threads
 
 	/**
