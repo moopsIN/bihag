@@ -32,7 +32,7 @@
 				<p><?php echo $thread->get_thread_primary_tag(); ?></p>
 			</div>
 			<div class="col-xs-6 text-right">
-				<p><?php echo "<a href='" . $WEB_ROOT . "user?name=" . $author['name'] . "'>".$author['name']."</a>"; ?></p>
+				<p><?php echo "<a href='" . $WEB_ROOT . "user?name=" . $author['name'] . "'><img src='./assets/img/default-avatar.jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$author['name']."</a>"; ?></p>
 			</div>
 		</div>
 		<div class="row text-center"><hr></div>
@@ -49,7 +49,7 @@
 			echo "</div>";
 			echo "<div class='row'>";
 			echo "<div class='col-xs-6'>".$post['time']."</div>";
-			echo "<div class='col-xs-6 text-right'><a href='" . $WEB_ROOT . "user?name=" . $post['username'] . "'>".$post['username']."</a></div>";
+			echo "<div class='col-xs-6 text-right'><a href='" . $WEB_ROOT . "user?name=" . $post['username'] . "'><img src='./assets/img/default-avatar.jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
 			echo "</div>";
 			echo "<div class='row'><hr/></div>";		
 	}
