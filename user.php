@@ -21,7 +21,7 @@
 <section>
 	<div class="container">
 		<div class="row">
-			<img src="./assets/img/default-avatar.jpg" class="col-xs-2 img-circle" style="">
+			<img src="./assets/img/default-avatar.jpg" class="col-xs-2 col-md-1 img-circle" style="">
 			<div class="col-xs-3"><h3><?php echo $user->get_user_name(); ?></h3></div>
 		</div>
 		<div class="row text-center"><hr></div>
