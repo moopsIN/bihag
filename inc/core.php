@@ -193,6 +193,18 @@
 	/**
 	 * 
 	 */
+	class bhg_update_user_profile
+	{
+		function update_avatar($filePath, $userID) {
+			bhg_db_connect::initialize();
+
+			bhg_db_connect::close();
+		}
+	}
+
+	/**
+	 * 
+	 */
 	class bhg_new_thread
 	{
 		private $threadTitle = "";

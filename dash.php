@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		<div class="row text-center">
-			<a href="./write"><input type="button" value="Write a New Post"></a>
+			<a href="./write"><input type="button" value="Start A New Thread"></a>
 		</div>
 	</div>
 </section>

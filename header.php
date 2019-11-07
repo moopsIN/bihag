@@ -1,9 +1,11 @@
+
+
 <!doctype html>
 
 <html lang="en">
 	<head>
   		<meta charset="utf-8">
-		  <title><?php echo $pageTitle; ?></title>
+		  <title>Moops Bihag</title>
 		  <meta name="description" content="A Bihag Power Demonstration">
 		  <meta name="author" content="Moops Design">
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,9 +25,10 @@
 				
 				<div class="row">
 					<div class="col-sm-6">
-						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a></h3>
+						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>				
 					<div class="col-sm-6 text-right">
+
 						<h4>
 						<a href="./">Home</a>&nbsp;
 					<?php if($_SESSION['validate']) { ?>
