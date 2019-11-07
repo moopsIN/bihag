@@ -43,7 +43,7 @@
 		<div class="row">
 <?php	
 	foreach ($postList as $post) {			
-			echo "<div class='row'>";
+			echo "<div class='row' id='".$post['postID']."'>";
 			echo "<p>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";

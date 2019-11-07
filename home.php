@@ -1,5 +1,8 @@
 <?php
 	include('inc/config.php');
+	include_once('inc/session.php');
+
+	bhg_session::start();
 	include('inc/core.php');
 
 	$threadList = new bhg_list_threads();

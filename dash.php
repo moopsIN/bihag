@@ -12,7 +12,7 @@
 	$threadList = $threads->get_thread_list($_SESSION['userID']);
 
 	$postHandler = new bhg_post;
-	$postList = $postHandler->get_all_posts_from_user($id);
+	$postList = $postHandler->get_all_posts_from_user($_SESSION['userID']);
 
 	require_once("header.php");
 ?>
@@ -56,14 +56,14 @@
 
 			<div class="col-sm-6">
 				<div class="row">
-					<h3>Threads By You</h3>
+					<h3>Recent Posts</h3>
 				</div>
 <?php
 	
-	foreach ($threadList as $thread) {
+	foreach ($postList as $post) {
 			echo "<div class='row'><hr /> </div>";
 			echo "<div class='row'>";
-			echo "<a href='./topic?id=".$thread['threadID']."'>".$thread['threadTitle']."</a>";
+			echo "<a href='./topic?id=".$post['threadID']."#".$post['postID']."'>".$post['postBody']."</a>";
 			echo "</div>";			
 	}
 ?>

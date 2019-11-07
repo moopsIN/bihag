@@ -1,5 +1,8 @@
 <?php
 	include('inc/config.php');
+	include_once('inc/session.php');
+
+	bhg_session::start();
 	include('inc/core.php');
 
 	$username = $_GET['name'];
@@ -8,6 +11,9 @@
 
 	$threads = new bhg_list_threads();
 	$threadList = $threads->get_thread_list($user->get_user_id());
+
+	$postHandler = new bhg_post;
+	$postList = $postHandler->get_all_posts_from_user($user->get_user_id());
 
 	require_once('header.php');
 ?>
@@ -37,7 +43,19 @@
 ?>
 			</div>
 			<div class="col-sm-6">
-				<h4>Recent Posts</h4>
+				<div class="row">
+					<h3>Recent Posts</h3>
+				</div>
+<?php
+	
+	foreach ($postList as $post) {
+			echo "<div class='row'><hr /> </div>";
+			echo "<div class='row'>";
+
+			echo "<a href='./topic?id=".$post['threadID']."#".$post['postID']."'>".$post['postBody']."</a>";
+			echo "</div>";			
+	}
+?>
 			</div>
 		</div>
 	</div>
