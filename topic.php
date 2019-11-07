@@ -11,7 +11,7 @@
 	$author = $thread->get_thread_author_metadata();
 
 	$postHandler = new bhg_post;
-	$postList = $postHandler->get_all_posts($id);
+	$postList = $postHandler->get_all_posts_from_thread($id);
 
 	require_once('header.php');
 ?>

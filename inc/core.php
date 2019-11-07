@@ -247,7 +247,28 @@
 		private $allPosts = array();
 		private $totalPosts;
 
-		function get_all_posts($thread) {
+		function get_all_posts_from_user($user) {
+			if (!isset($user) || empty($user) || $user < 1) return NULL;
+
+			bhg_db_connect::initialize();
+
+			$sql = "SELECT * FROM posts WHERE userID='".$user."'";
+			
+			$result = bhg_db_connect::sqlQuery($sql);
+
+			$this->totalPosts = $result->num_rows;
+
+			if($this->totalPosts > 0) {
+				while($row = $result->fetch_assoc()) {
+					$allPosts[] = $row;
+				}
+			}
+
+			bhg_db_connect::close();
+			return $allPosts;
+		}
+
+		function get_all_posts_from_thread($thread) {
 			if (!isset($thread) || empty($thread) || $thread < 1) return NULL;
 
 			bhg_db_connect::initialize();

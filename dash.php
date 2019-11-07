@@ -11,6 +11,9 @@
 	$threads = new bhg_list_threads();
 	$threadList = $threads->get_thread_list($_SESSION['userID']);
 
+	$postHandler = new bhg_post;
+	$postList = $postHandler->get_all_posts_from_user($id);
+
 	require_once("header.php");
 ?>
 <section>
@@ -35,6 +38,7 @@
 <section>
 	<div class="container">
 		<div class="row">
+
 			<div class="col-sm-6">
 				<div class="row">
 					<h3>Threads By You</h3>
@@ -49,6 +53,22 @@
 	}
 ?>
 			</div>
+
+			<div class="col-sm-6">
+				<div class="row">
+					<h3>Threads By You</h3>
+				</div>
+<?php
+	
+	foreach ($threadList as $thread) {
+			echo "<div class='row'><hr /> </div>";
+			echo "<div class='row'>";
+			echo "<a href='./topic?id=".$thread['threadID']."'>".$thread['threadTitle']."</a>";
+			echo "</div>";			
+	}
+?>
+			</div>
+
 		</div>
 	</div>
 </section>
