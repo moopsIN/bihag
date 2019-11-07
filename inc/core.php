@@ -237,5 +237,70 @@
 			return true;
 
 		}
-	}
+	} //end of bhg_new_thread	
+
+	/**
+	 * 
+	 */
+	class bhg_post
+	{
+		private $allPosts = array();
+		private $totalPosts;
+
+		function get_all_posts($thread) {
+			if (!isset($thread) || empty($thread) || $thread < 1) return NULL;
+
+			bhg_db_connect::initialize();
+
+			$sql = "SELECT * FROM posts WHERE threadID='".$thread."'";
+			
+			$result = bhg_db_connect::sqlQuery($sql);
+
+			$this->totalPosts = $result->num_rows;
+
+			if($this->totalPosts > 0) {
+				while($row = $result->fetch_assoc()) {				
+
+					$sql = "SELECT username FROM users WHERE id='".$row['userID']."'";
+					$userResult = bhg_db_connect::sqlQuery($sql);
+					$userRow = $userResult->fetch_assoc();
+
+					$row['username'] = $userRow['username'];
+					$allPosts[] = $row;
+				}
+			}
+
+			bhg_db_connect::close();
+			return $allPosts;
+		}
+		
+		function new_post($thread, $author, $body) {
+			
+			if ($thread == "" || $author == "" || $body == "") return false;
+
+			bhg_db_connect::initialize();
+
+			$date = date('Y-m-d H:i:s');
+
+			$sql = "INSERT INTO posts (userID, threadID, postBody, time) VALUES ('".$author."', '".$thread."', '".$body."', '". $date ."')";
+
+			if(!$result = bhg_db_connect::sqlQuery($sql)) {
+				error_log("Error In Write Post Query ".bhg_db_connect::errorMessage());
+				bhg_db_connect::close();
+				return false;
+			}
+
+			$sql = "UPDATE threads SET lastModified='". $date ."' WHERE threadID='". $thread ."'";
+
+			if(!$result = bhg_db_connect::sqlQuery($sql)) {
+				error_log("Error In Update Thread Query ".bhg_db_connect::errorMessage());
+				bhg_db_connect::close();
+				return false;
+			}
+
+			bhg_db_connect::close();
+			return true;
+
+		}
+	} //end of bhg_reply_post
 ?>

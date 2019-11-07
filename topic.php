@@ -10,6 +10,9 @@
 	$thread = new bhg_single_thread($id);
 	$author = $thread->get_thread_author_metadata();
 
+	$postHandler = new bhg_post;
+	$postList = $postHandler->get_all_posts($id);
+
 	require_once('header.php');
 ?>
 
@@ -38,6 +41,26 @@
 <section>
 	<div class="container">
 		<div class="row">
+<?php	
+	foreach ($postList as $post) {			
+			echo "<div class='row'>";
+			echo "<p>".$post['postBody']."</p>";
+			echo "</div>";
+			echo "<div class='row'>";
+			echo "<div class='col-xs-6'>".$post['time']."</div>";
+			echo "<div class='col-xs-6 text-right'><a href='" . $WEB_ROOT . "user?name=" . $post['username'] . "'>".$post['username']."</a></div>";
+			echo "</div>";
+			echo "<div class='row'><hr/></div>";		
+	}
+?>
+			
+		</div>
+	</div>
+</section>
+
+<section>
+	<div class="container">
+		<div class="row">
 			<h5>Reply To This Thread:</h5>
 		</div>
 <?php
@@ -48,7 +71,8 @@
 			<form action="scripts/postReply.php" method="post">
 			<div class="col-sm-1">&nbsp;</div>		
 					<textarea class="col-sm-8" name="replyPost" placeholder="Type Your Post Here" required></textarea>
-					<input type="hidden" name="replyUser" value="<?php echo $_SESSION['userID']; ?>">
+					<input type="hidden" name="user" value="<?php echo $_SESSION['userID']; ?>">
+					<input type="hidden" name="thread" value="<?php echo $id; ?>">
 					<input class="col-sm-2" type="submit" value="Post">
 			<div class="col-sm-1">&nbsp;</div>
 			</form>
