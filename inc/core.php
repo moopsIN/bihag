@@ -303,6 +303,7 @@
 
 			$date = date('Y-m-d H:i:s');
 
+			
 			$sql = "INSERT INTO posts (userID, threadID, postBody, time) VALUES ('".$author."', '".$thread."', '".$body."', '". $date ."')";
 
 			if(!$result = bhg_db_connect::sqlQuery($sql)) {

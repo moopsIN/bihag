@@ -20,6 +20,7 @@
 	<div class="container">
 		<div class="row">
 			<h3><?php echo $thread->get_thread_title(); ?></h3>
+
 		</div>
 		<div class="row text-center"><hr></div>
 		<div class="row">
@@ -87,6 +88,7 @@
 			<form action="./scripts/loginAuthenticate.php" method="post">
 					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
 					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
+					<input type="hidden" name="redirect" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
 					<div class="row"><input type="submit" value="Login"/></div>
 			</form>
 

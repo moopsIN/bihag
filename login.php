@@ -26,6 +26,7 @@
 				<form action="./scripts/loginAuthenticate.php" method="post">
 					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
 					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
+					<input type="hidden" name="redirect" value="/dash">
 					<div class="row"><input type="submit" value="Login"/></div>
 				</form>
 			</div>

@@ -13,7 +13,8 @@
 		if ($isAuthentic['valid']) {
 			include_once('../inc/session.php');
 			bhg_session::initialize($_POST['username'],$isAuthentic['id']);
-			header("Location:../dash");
+			$redirectUrl = $_POST['redirect'];
+			header("Location:..".$redirectUrl);
 
 		} else {
 			header("Location: ../login?message=Invalid%20Credentials");
