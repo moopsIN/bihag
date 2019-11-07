@@ -17,7 +17,14 @@
 	<div class="container">
 		<div class="row">
 			<img src="./assets/img/default-avatar.jpg" class="col-xs-2 img-circle" style="">
-			<div class="col-xs-3"><h3><?php echo $_SESSION['userName']; ?></h3></div>
+			<div class="col-xs-4"><h3><?php echo $_SESSION['userName']; ?></h3></div>
+			<div class="col-xs-3">
+				<form action="scripts/profileEdit.php" method="post" enctype="multipart/form-data">
+        				<input type="file" name="fileToUpload" id="fileToUpload" required/>
+        				<input type="hidden" name="token" value="0">
+    					<input type="submit" value="Upload New Profile Image" name="submit">
+				</form>
+			</div>
 		</div>
 		<div class="row text-center">
 			<a href="./write"><input type="button" value="Write a New Post"></a>
