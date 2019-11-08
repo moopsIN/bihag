@@ -22,6 +22,5 @@
 		} else {
 			die("Mar Gaya Sarwa. Check Error Log");
 		}
-
 	}
 ?>

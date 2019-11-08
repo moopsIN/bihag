@@ -6,4 +6,6 @@ IN HEAVY DEVELOPMENT. NOT YET COMPLETE. DO NOT USE IN ANY CIRCUMSTANCE RIGHT NOW
 TODO - Urgent
 ##############################
 
-Fix create Time updatation in threads table.
+Redirect After Write New Thread
+
+Implement Search
