@@ -1,6 +1,4 @@
 <?php
-	include('inc/config.php');
-
-	
-	header("Location:".$WEB_ROOT."home");
+	include('inc/config.php');	
+	header("Location:".$WEB_ROOT."/home");
 ?>

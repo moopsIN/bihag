@@ -35,7 +35,7 @@
 
 						<h4>
 						<a href="./">Home</a>&nbsp;
-					<?php if($_SESSION['validate']) { ?>
+					<?php if(isset($_SESSION['validate']) && $_SESSION['validate']) { ?>
 						<a href="./dash"><?php echo $_SESSION['userName']; ?></a>&nbsp;
 						<a href="./scripts/logout">Logout</a>&nbsp;
 					<?php } else { ?>

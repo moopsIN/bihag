@@ -1,6 +1,5 @@
 <?php
 	include_once("../inc/session.php");
-	include_once("../inc/core.php");
 
 	if (bhg_session::isLoggedIn()) {
 		bhg_session::end();

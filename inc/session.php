@@ -1,6 +1,6 @@
 <?php
 
-	session_start();
+	bhg_session::start();
 	/**
 	 * 
 	 */
@@ -37,12 +37,12 @@
 		}
 
 		function refresh() {
-			error_log("Somehow We End Up Here");
 			session_regenerate_id();
 			$_SESSION['id'] = session_id();			
 		}
 
-		function isValid() {			
+		function isValid() {
+			if(!isset($_SESSION['id'])) return false;			
 			if ($_SESSION['validate']) return true;
 			else return false;
 		}
