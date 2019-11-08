@@ -1,6 +1,7 @@
 <?php	
 
-	include_once('DBconnect.php');
+	
+	require_once('DBconnect.php');
 
 	/**
 	 * 
@@ -15,31 +16,7 @@
 		private $threadCreateTime;
 		private $threadModifyTime;
 
-		function display_thread_list($num_of_threads) {
-			
-			bhg_db_connect::initialize();
-
-			$sql = "SELECT * FROM threads ORDER BY time DESC LIMIT ".$num_of_threads;
-			$result = bhg_db_connect::sqlQuery($sql);
-
-			if ($result->num_rows > 0) {
-				while($row = $result->fetch_assoc()) {
-
-					echo "<div class='row'>";
-					echo "<h4><a href='".$WEB_ROOT."/topic?id=".$row['threadID']."'>".$row['threadTitle']."</a></h4>";
-					echo "</div>";
-
-					echo "<div class='row'>";
-					echo "<div class='col-xs-6'><strong>".strtoupper($row['threadPrimaryTag'])."</strong></div>";
-					echo "<div class='col-xs-6 text-right'><strong>".$row['time']."</strong></div>";
-					echo "</div>";
-
-					echo "<div class='row'><hr></div>";
-				}
-				
-			}
-			bhg_db_connect::close();
-		}
+		private $threadList = array();
 
 		function get_thread_list($user) {
 
@@ -57,6 +34,8 @@
 
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
+						$singleThreadHandler = new bhg_single_thread($row['threadAuthor']);
+
 						array_push($postListArray, $row);
 					}
 				}

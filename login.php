@@ -7,7 +7,11 @@
 		exit();
 	}
 
-	$message = $_GET['message'];
+	if (isset($_GET['message']) && !empty($_GET['message'])) {
+		$message = $_GET['message'];
+	} else {
+		$message = "";
+	}
 
 	require_once('header.php');
 ?>
@@ -23,7 +27,7 @@
 		<div class="row text-center">
 			<div class="col-sm-4 col-xs-1">&nbsp;</div>
 			<div class="col-sm-4 col-xs-10">
-				<form action="./scripts/loginAuthenticate.php" method="post">
+				<form action="<?php echo $WEB_ROOT; ?>/scripts/loginAuthenticate.php" method="post">
 					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
 					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
 					<input type="hidden" name="redirect" value="/dash">

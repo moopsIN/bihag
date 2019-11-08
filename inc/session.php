@@ -1,4 +1,6 @@
 <?php
+
+	session_start();
 	/**
 	 * 
 	 */
@@ -21,7 +23,12 @@
 		}
 
 		function start() {
-			session_start();			
+			if (session_status() == PHP_SESSION_NONE) {
+    			session_start();
+    			if (isset($_SESSION['id'])) {
+    				self::refresh();
+    			}
+			}
 		}
 
 		function end() {
@@ -30,6 +37,7 @@
 		}
 
 		function refresh() {
+			error_log("Somehow We End Up Here");
 			session_regenerate_id();
 			$_SESSION['id'] = session_id();			
 		}
@@ -51,10 +59,8 @@
 
 		function isLoggedIn() {
 			self::start();
-			
-			if(self::isValid()) {
+			if(self::isValid()) {				
 				if(self::isActive()) {
-					self::refresh();
 					self::set_lastActive();					
 					return true;
 				} else {

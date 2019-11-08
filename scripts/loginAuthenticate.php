@@ -6,17 +6,17 @@
 		
 		include_once('../inc/loginAuth.php');
 
-		$isAuthentic = false;
+		$isAuthentic['valid'] = false;
 		
-		$isAuthentic = bhg_login::authenticate($_POST['username'], $_POST['passcode']);
+		$isAuthentic = bhg_login::authenticate($_POST['username'], $_POST['passcode']);	
 
-		if ($isAuthentic['valid']) {
+		if ($isAuthentic['valid']) {			
 			include_once('../inc/session.php');
 			bhg_session::initialize($_POST['username'],$isAuthentic['id']);
 			$redirectUrl = $_POST['redirect'];
 			header("Location:..".$redirectUrl);
 
-		} else {
+		} else {			
 			header("Location: ../login?message=Invalid%20Credentials");
 		}
 	} else {

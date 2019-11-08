@@ -1,5 +1,3 @@
-
-
 <!doctype html>
 
 <html lang="en">
@@ -10,7 +8,7 @@
 		  <meta name="author" content="Moops Design">
 		  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-		  <link rel="stylesheet" href="<?php echo $WEB_ROOT;?>assets/styles/bootstrap/bootstrap.min.css">
+		  <link rel="stylesheet" href="<?php echo $WEB_ROOT;?>/assets/styles/bootstrap/bootstrap.min.css">
 		  <link rel="stylesheet" href="assets/styles/custom.css">
 
 		  <!--
@@ -24,10 +22,16 @@
 			<div class="container">
 				
 				<div class="row">
-					<div class="col-sm-6">
+					<div class="col-sm-3">
 						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
+					</div>
+					<div class="col-sm-5">
+						<form action="scripts/searchController.php" method="get" id="search">
+							<input type="text" name="query" placeholder="Search Bihag" class="col-xs-8" required/>
+							<input type="submit" class="col-xs-4" value="SEARCH">
+						</form>
 					</div>				
-					<div class="col-sm-6 text-right">
+					<div class="col-sm-4 text-right">
 
 						<h4>
 						<a href="./">Home</a>&nbsp;
