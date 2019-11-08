@@ -48,7 +48,7 @@
 			echo "<p>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
-			echo "<div class='col-xs-6'>".$post['time']."</div>";
+			echo "<div class='col-xs-6'>". date('d-M-Y',strtotime($post['time'])) ."</div>";
 			echo "<div class='col-xs-6 text-right'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "'><img src='./assets/img/default-avatar.jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
 			echo "</div>";
 			echo "<div class='row'><hr/></div>";		

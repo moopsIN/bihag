@@ -18,7 +18,7 @@
 		$isPosted = $postHandler->new_post($_POST['thread'], $_POST['user'], $_POST['replyPost']);
 
 		if ($isPosted) {
-			header("Location:".$WEB_ROOT."topic?id=".$_POST['thread']);
+			header("Location:".$WEB_ROOT."/topic?id=".$_POST['thread']);
 			exit();
 		} else {
 			die("Can't Post Check error log for db errors.");
