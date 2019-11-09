@@ -189,14 +189,14 @@
 		private $threadTitle = "";
 		private $threadBody = "";
 		private $threadAuthor = "";
+		private $threadReturn;
 		
 		function __construct($title, $body, $author)
 		{
 			$this->threadTitle = $title;
 			$this->threadBody = $body;
 			$this->threadAuthor = $author;
-
-			error_log("initialized Variables ". $this->threadTitle.", ".$this->threadAuthor);
+			$this->threadReturn['id'] = NULL;
 		}
 
 		function writeThread() {
@@ -204,16 +204,35 @@
 
 			bhg_db_connect::initialize();
 
+			$this->threadTitle = bhg_db_connect::escape_string($this->threadTitle);
+			$this->threadBody = bhg_db_connect::escape_string($this->threadBody);
+
 			$sql = "INSERT INTO threads (threadTitle, threadBody, threadPrimaryTag, threadAuthor, time, lastModified) VALUES ('".$this->threadTitle."', '".$this->threadBody."', 'misc', '".$this->threadAuthor."', now(), now())";
 
 			if(!$result = bhg_db_connect::sqlQuery($sql)) {
 				error_log("Error In Write Query ".bhg_db_connect::errorMessage());
 				bhg_db_connect::close();
-				return false;
+				return $this->threadReturn;
+			}
+
+			$sql = "SELECT * FROM threads WHERE threadTitle='". $this->threadTitle ."' AND threadAuthor='". $this->threadAuthor ."'";
+
+			if(!$result = bhg_db_connect::sqlQuery($sql)) {
+				error_log("Error In Write Query ".bhg_db_connect::errorMessage());
+				bhg_db_connect::close();
+				return $this->threadReturn;
+			}
+
+			if($result->num_rows != 1) {
+				bhg_db_connect::close();
+				return $this->threadReturn;
+			} else {
+				$row = $result->fetch_assoc();
+				$this->threadReturn = $row['threadID'];
 			}
 
 			bhg_db_connect::close();
-			return true;
+			return $this->threadReturn;
 
 		}
 	} //end of bhg_new_thread	
@@ -239,12 +258,12 @@
 
 			if($this->totalPosts > 0) {
 				while($row = $result->fetch_assoc()) {
-					$allPosts[] = $row;
+					$this->allPosts[] = $row;
 				}
 			}
 
 			bhg_db_connect::close();
-			return $allPosts;
+			return $this->allPosts;
 		}
 
 		function get_all_posts_from_thread($thread) {
@@ -266,12 +285,12 @@
 					$userRow = $userResult->fetch_assoc();
 
 					$row['username'] = $userRow['username'];
-					$allPosts[] = $row;
+					$this->allPosts[] = $row;
 				}
 			}
 
 			bhg_db_connect::close();
-			return $allPosts;
+			return $this->allPosts;
 		}
 		
 		function new_post($thread, $author, $body) {
@@ -282,6 +301,7 @@
 
 			$date = date('Y-m-d H:i:s');
 
+			$body = bhg_db_connect::escape_string($body);
 			
 			$sql = "INSERT INTO posts (userID, threadID, postBody, time) VALUES ('".$author."', '".$thread."', '".$body."', '". $date ."')";
 
@@ -304,4 +324,37 @@
 
 		}
 	} //end of bhg_reply_post
+
+	/**
+	 * 
+	 */
+	class bhg_search
+	{		
+		private $searchTerm;
+		private $searchResult = array();
+
+		function __construct($term)
+		{
+			$this->searchTerm = $term;
+		}
+
+		function search_topic_title() {
+			bhg_db_connect::initialize();
+
+			$sql = "SELECT * FROM threads WHERE threadTitle LIKE '%".$this->searchTerm."%' OR threadBody LIKE '%".$this->searchTerm."%'";
+
+			$result = bhg_db_connect::sqlQuery($sql);
+
+			if($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+					$this->searchResult[] = $row;
+				}
+			} else {
+					$this->searchResult = NULL;
+			}
+
+			bhg_db_connect::close();
+			return $this->searchResult;
+		}
+	} // end of bhg_search
 ?>

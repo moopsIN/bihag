@@ -35,6 +35,10 @@ class bhg_db_connect
     public static function errorMessage() {
       return mysqli_error(self::$conn);
     }
+
+    public static function escape_string($var) {
+      return self::$conn->real_escape_string($var);
+    }
 }
 
 ?>

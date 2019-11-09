@@ -26,7 +26,7 @@
 						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>
 					<div class="col-sm-5">
-						<form action="scripts/searchController.php" method="get" id="search">
+						<form action="search.php" method="get" id="search">
 							<input type="text" name="query" placeholder="Search Bihag" class="col-xs-8" required/>
 							<input type="submit" class="col-xs-4" value="SEARCH">
 						</form>

@@ -32,12 +32,13 @@
 						echo  date('d-M-Y',strtotime($thread['time']));
 					echo "</div>";
 				echo "</div>";
+				echo "<div class='col-xs-12'>";
+					echo "<p>". substr($thread['threadBody'], 0, 300) ."...</p>";
+				echo "</div>";
 			echo "</div>";
 			echo "<div class='row text-center'><hr></div>";
 	}
-?>
-
-	
+?>	
 
 	</div>
 </section>

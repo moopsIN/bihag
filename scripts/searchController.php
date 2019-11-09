@@ -1,12 +1,11 @@
 <?php
+	require_once("inc/session.php");
+	require_once('inc/config.php');
+	require_once('inc/core.php');
 
-	include_once('../inc/session.php');
-	include_once('../inc/config.php');
-	include_once('../inc/core.php');
-
-	$query = $_GET['query'];
-
-	
-
-	header("Location:../search?q=".$query)
+	function searchResult($term) {		
+		$searchHandler = new bhg_search($term);
+		$results = $searchHandler->search_topic_title();
+		return $results;
+	}
 ?>

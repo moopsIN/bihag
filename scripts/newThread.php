@@ -17,10 +17,10 @@
 
 		$writeResult = $newThreadHandle->writeThread();
 
-		if($writeResult) {
-			die("Success");
+		if($writeResult === NULL) {
+			die("Mar Gaya Yaar");
 		} else {
-			die("Mar Gaya Sarwa. Check Error Log");
+			header("Location:".$WEB_ROOT."/topic?id=".$writeResult);
 		}
 	}
 ?>
