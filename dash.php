@@ -63,7 +63,7 @@
 	foreach ($postList as $post) {
 			echo "<div class='row'><hr /> </div>";
 			echo "<div class='row'>";
-			echo "<a href='./topic?id=".$post['threadID']."#".$post['postID']."'>".$post['postBody']."</a>";
+			echo "<a href='./topic?id=".$post['threadID']."#".$post['postID']."'>".substr($post['postBody'], 0, 100)."..</a>";
 			echo "</div>";			
 	}
 ?>

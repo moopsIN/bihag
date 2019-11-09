@@ -250,7 +250,7 @@
 
 			bhg_db_connect::initialize();
 
-			$sql = "SELECT * FROM posts WHERE userID='".$user."'";
+			$sql = "SELECT * FROM posts WHERE userID='".$user."' ORDER BY time DESC";
 			
 			$result = bhg_db_connect::sqlQuery($sql);
 
@@ -341,7 +341,7 @@
 		function search_topic_title() {
 			bhg_db_connect::initialize();
 
-			$sql = "SELECT * FROM threads WHERE threadTitle LIKE '%".$this->searchTerm."%' OR threadBody LIKE '%".$this->searchTerm."%'";
+			$sql = "SELECT * FROM threads WHERE threadTitle LIKE '%".$this->searchTerm."%' OR threadBody LIKE '%".$this->searchTerm."%' ORDER BY time DESC";
 
 			$result = bhg_db_connect::sqlQuery($sql);
 
