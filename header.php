@@ -16,7 +16,7 @@
     			selector: '#bihagtextarea',
     			menubar: false,
     			plugins: ["autolink codesample hr link lists wordcount"],
-    			toolbar: 'undo redo | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | wordcount',
+    			toolbar: 'undo redo | h2 h3 | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | wordcount',
     			width: '80%',
     			min_width: '300px'
   			});
