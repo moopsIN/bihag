@@ -22,9 +22,9 @@
 			<div class="col-sm-2 col-xs-1">&nbsp;</div>
 			<div class="col-sm-8 col-xs-10">
 				<form action="./scripts/newThread.php" method="post">
-					<div class="row"><input type="text" name="threadTitle" placeholder="Thread Title" required/></div><br>
-					<div class="row"><textarea name="threadBody" required/></textarea></div><br>
-					<div class="row"><input type="submit" value="Post Thread"/></div>
+					<div class="row"><input class="col-sm-12" type="text" name="threadTitle" placeholder="Thread Title" required/></div><br>
+					<div class="row"><textarea class="col-sm-12" rows="8" placeholder="Thread Description" name="threadBody" required/></textarea></div><br>
+					<div class="row"><input class="col-sm-4" type="submit" value="Post Thread"/></div>
 				</form>
 			</div>
 			<div class="col-sm-2 col-xs-1">&nbsp;</div>

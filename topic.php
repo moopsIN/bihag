@@ -24,6 +24,9 @@
 		</div>
 		<div class="row text-center"><hr></div>
 		<div class="row">
+			<p class="col-xs-6"><?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "'><img src='./assets/img/".$author['id'].".jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$author['name']."</a>"; ?></p>
+		</div>
+		<div class="row">
 			<p><?php echo $thread->get_thread_body(); ?></p>
 		</div>
 		
@@ -32,7 +35,7 @@
 				<p><?php echo $thread->get_thread_primary_tag(); ?></p>
 			</div>
 			<div class="col-xs-6 text-right">
-				<p><?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "'><img src='./assets/img/default-avatar.jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$author['name']."</a>"; ?></p>
+				<p><?php echo humanTiming(strtotime($thread->get_thread_create_time())) . " ago"; ?></p>
 			</div>
 		</div>
 		<div class="row text-center"><hr></div>
@@ -45,11 +48,12 @@
 <?php	
 	foreach ($postList as $post) {			
 			echo "<div class='row' id='".$post['postID']."'>";
-			echo "<p>".$post['postBody']."</p>";
+			echo "<div class='col-xs-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "'><img src='./assets/img/".$post['userID'].".jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
+			echo "<p class='col-xs-12'>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
-			echo "<div class='col-xs-6'>". date('d-M-Y',strtotime($post['time'])) ."</div>";
-			echo "<div class='col-xs-6 text-right'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "'><img src='./assets/img/default-avatar.jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
+			echo "<div class='col-xs-12 text-right'>". humanTiming(strtotime($post['time'])) ." ago</div>";
+			
 			echo "</div>";
 			echo "<div class='row'><hr/></div>";		
 	}
@@ -71,7 +75,7 @@
 
 			<form action="scripts/postReply.php" method="post">
 			<div class="col-sm-1">&nbsp;</div>		
-					<textarea class="col-sm-8" name="replyPost" placeholder="Type Your Post Here" required></textarea>
+					<textarea class="col-sm-8" rows="5" name="replyPost" placeholder="Type Your Post Here" required></textarea>
 					<input type="hidden" name="user" value="<?php echo $_SESSION['userID']; ?>">
 					<input type="hidden" name="thread" value="<?php echo $id; ?>">
 					<input class="col-sm-2" type="submit" value="Post">

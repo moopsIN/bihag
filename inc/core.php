@@ -3,6 +3,27 @@
 	
 	require_once('DBconnect.php');
 
+	function humanTiming ($time) {
+
+    $time = time() - $time; // to get the time since that moment
+    $time = ($time<1)? 1 : $time;
+    $tokens = array (
+        31536000 => 'year',
+        2592000 => 'month',
+        604800 => 'week',
+        86400 => 'day',
+        3600 => 'hour',
+        60 => 'minute',
+        1 => 'second'
+    	);
+
+    	foreach ($tokens as $unit => $text) {
+        	if ($time < $unit) continue;
+        	$numberOfUnits = floor($time / $unit);
+        	return $numberOfUnits.' '.$text.(($numberOfUnits>1)?'s':'');
+    	}
+	}
+
 	/**
 	 * 
 	 */
@@ -321,7 +342,26 @@
 
 			bhg_db_connect::close();
 			return true;
+		}
 
+		function update_post($id, $body) {
+
+			bhg_db_connect::initialize();
+
+			$date = date('Y-m-d H:i:s');
+
+			$body = bhg_db_connect::escape_string($body);
+
+			$sql = "UPDATE posts SET postBody='". $body ."', time='". $date ."' WHERE postID='". $id ."'";
+
+			if(!$result = bhg_db_connect::sqlQuery($sql)) {
+				error_log("Error In Update Thread Query ".bhg_db_connect::errorMessage());
+				bhg_db_connect::close();
+				return false;
+			}
+
+			bhg_db_connect::close();
+			return true;
 		}
 	} //end of bhg_reply_post
 
