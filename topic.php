@@ -49,7 +49,9 @@
 	foreach ($postList as $post) {			
 			echo "<div class='row' id='".$post['postID']."'>";
 			echo "<div class='col-xs-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "'><img src='./assets/img/".$post['userID'].".jpg' class='img-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
-			echo "<p class='col-xs-12'>".$post['postBody']."</p>";
+			echo "</div>";
+			echo "<div class='row'>";
+			echo "<p>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
 			echo "<div class='col-xs-12 text-right'>". humanTiming(strtotime($post['time'])) ." ago</div>";
@@ -75,7 +77,7 @@
 
 			<form action="scripts/postReply.php" method="post">
 			<div class="col-sm-1">&nbsp;</div>		
-					<textarea class="col-sm-8" rows="5" name="replyPost" placeholder="Type Your Post Here" required></textarea>
+					<textarea id ="bihagtextarea" class="col-sm-8" rows="5" name="replyPost" placeholder="Type Your Post Here" required> </textarea>
 					<input type="hidden" name="user" value="<?php echo $_SESSION['userID']; ?>">
 					<input type="hidden" name="thread" value="<?php echo $id; ?>">
 					<input class="col-sm-2" type="submit" value="Post">

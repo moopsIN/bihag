@@ -10,6 +10,12 @@
 
 		  <link rel="stylesheet" href="<?php echo $WEB_ROOT;?>/assets/styles/bootstrap/bootstrap.min.css">
 		  <link rel="stylesheet" href="assets/styles/custom.css">
+		  <script src="<?php echo $WEB_ROOT; ?>/assets/js/tinymce/tinymce.min.js"></script>
+		  <script>
+  			tinymce.init({
+    			selector: '#bihagtextarea'
+  			});
+  		</script>
 
 		  <!--
 		  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
