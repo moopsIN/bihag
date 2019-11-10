@@ -13,7 +13,12 @@
 		  <script src="<?php echo $WEB_ROOT; ?>/assets/js/tinymce/tinymce.min.js"></script>
 		  <script>
   			tinymce.init({
-    			selector: '#bihagtextarea'
+    			selector: '#bihagtextarea',
+    			menubar: false,
+    			plugins: ["autolink codesample hr link lists wordcount"],
+    			toolbar: 'undo redo | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | wordcount',
+    			width: '80%',
+    			min_width: '300px'
   			});
   		</script>
 
