@@ -34,6 +34,14 @@
 		<div class="row">
 			<p class="py-sm-3 py-xs-1"><?php echo $thread->get_thread_body(); ?></p>
 		</div>
+
+		<?php if ($_SESSION['userID'] === $author['id']) { ?>
+
+		<div class="row">
+			<p class="text-right"><a href="#">edit</a></p>
+		</div>
+
+		<?php }	?>
 		
 		
 		<hr class="col-12 p-0">
@@ -52,10 +60,21 @@
 			echo "<p class='py-sm-3 py-1'>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
+
+			if ($_SESSION['userID'] === $post['userID']) {
+
+			echo "<div class='row'>";
+			echo "<p class='col-10 mx-auto text-right'><a href='#'>edit</a></p>";
+			echo "</div>";
+
+		}
 			
 			
 			echo "</div>";
-			echo "<hr class='col-12 p-0'>";		
+			echo "<hr class='col-12 p-0'>";
+
+		
+		
 	}
 ?>		
 	</div>

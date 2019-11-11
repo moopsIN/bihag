@@ -25,7 +25,7 @@
 			echo "<div class='container'>";
 				echo "<div class='row'>";
 					echo "<div class='col-6 text-left'>";
-						echo "<a href='#' class='bg-info text-light px-1 rounded'><code>" . strtoupper($thread['threadPrimaryTag']) . "</code></a>";
+						echo "<a href='/list?tag=". $thread['threadPrimaryTag'] ."' class='bg-info text-light px-1 rounded'><code>" . strtoupper($thread['threadPrimaryTag']) . "</code></a>";
 					echo "</div>";
 					echo "<div class='col-6 text-right'><small><strong class='text-info'>";
 						echo  humanTiming(strtotime($thread['time']));

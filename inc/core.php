@@ -61,6 +61,31 @@
 					}
 				}
 
+			bhg_db_connect::close();
+
+			return $postListArray;
+		}
+
+		function list_thread_by_tag($tag) {
+			bhg_db_connect::initialize();
+
+			$postListArray = array();
+
+			$sql = "SELECT * FROM threads WHERE threadPrimaryTag='". $tag ."' ORDER BY time DESC";
+
+			$result = bhg_db_connect::sqlQuery($sql);
+
+				if ($result->num_rows > 0) {
+					while($row = $result->fetch_assoc()) {
+					
+						array_push($postListArray, $row);
+					}
+				} else {
+					$postListArray = NULL;
+				}
+
+			bhg_db_connect::close();
+
 			return $postListArray;
 		}
 
