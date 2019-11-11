@@ -28,7 +28,7 @@
 				<?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "' class='text-danger'><img src='./assets/img/".$author['id'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$author['name']."</a>"; ?>
 			</div>
 			<div class="col-6 text-right">
-				<small><strong><?php echo humanTiming(strtotime($thread->get_thread_create_time())) . " ago"; ?></small></strong>
+				<small><strong class='text-muted'><?php echo humanTiming(strtotime($thread->get_thread_create_time())) . " ago"; ?></small></strong>
 			</div>
 		</div>
 		<div class="row">
@@ -54,7 +54,7 @@
 	foreach ($postList as $post) {			
 			echo "<div class='row pr-3' id='".$post['postID']."'>";
 			echo "<div class='col-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "' class='text-danger'><img src='./assets/img/".$post['userID'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$post['username']."</a></div>";
-			echo "<div class='col-6 text-right'><small><strong>". humanTiming(strtotime($post['time'])) ." ago</small></strong></div>";
+			echo "<div class='col-6 text-right'><small><strong class='text-muted'>". humanTiming(strtotime($post['time'])) ." ago</small></strong></div>";
 			echo "</div>";
 			echo "<div class='row'>";
 			echo "<p class='py-sm-3 py-1'>".$post['postBody']."</p>";

@@ -11,23 +11,23 @@
 	require_once('header.php');
 ?>
 
-<section>
+<section class="my-4">
 	<div class="container">
-		<div class="row text-center">
-			<div class="col-12">
-				<h2>Recent Posts</h2>
+		<div class="row">
+			<div class="col-10 col-sm-8 col-md-6 col-lg-4 text-center mx-auto">
+				<h2 class="text-white border border-info bg-info rounded shadow">Recent Posts</h2>
 			</div>			
 		</div>
 		<div class="row text-center"><hr></div>
 
 <?php
 	foreach ($threads as $thread) {
-			echo "<div class='container'>";
+			echo "<div class='container col-12 col-sm-12 px-3 mx-auto border-bottom shadow-sm rounded'>";
 				echo "<div class='row'>";
 					echo "<div class='col-6 text-left'>";
 						echo "<a href='/list?tag=". $thread['threadPrimaryTag'] ."' class='bg-info text-light px-1 rounded'><code>" . strtoupper($thread['threadPrimaryTag']) . "</code></a>";
 					echo "</div>";
-					echo "<div class='col-6 text-right'><small><strong class='text-info'>";
+					echo "<div class='col-6 text-right'><small><strong class='text-muted'>";
 						echo  humanTiming(strtotime($thread['time']));
 					echo " ago</strong></small></div>";
 				echo "</div>";
@@ -37,7 +37,7 @@
 				echo "</div>";
 				
 				echo "<div class='row'>";
-					echo "<p class='lead pl-xs-2 pl-sm-3'>". substr($thread['threadBody'], 0, 180) ."...</p>";
+					echo "<p class='text-secondary pl-xs-2 pl-sm-3'>". substr($thread['threadBody'], 0, 180) ."...</p>";
 				echo "</div>";
 			echo "</div>";
 			echo "<div class='row text-center'><hr></div>";
