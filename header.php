@@ -27,11 +27,11 @@
 	</head>
 
 	<body>
-		<header class="bg-light pt-3 pb-0 align-bottom">
+		<header class="shadow-sm bg-light pt-3 pb-0 align-bottom">
 			<div class="container">				
 				<div class="row pt-1">
 					<div class="col-12 col-sm-4 text-center text-sm-left">
-						<h3 class="font-weight-bold"><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
+						<h3><a class="text-info font-weight-bold" href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>
 					<div class="col-12 col-sm-4">
 						<form action="search.php" method="get" id="search">
@@ -41,12 +41,12 @@
 					</div>				
 					<div class="col-12 col-sm-4 text-center text-sm-right pt-2">
 						<h6>
-						<a href="./">Home</a>&nbsp;
+						<a class="text-danger" href="./">Home</a>&nbsp;
 					<?php if(isset($_SESSION['validate']) && $_SESSION['validate']) { ?>
-						<a href="./dash"><?php echo $_SESSION['userName']; ?></a>&nbsp;
-						<a href="./scripts/logout">Logout</a>&nbsp;
+						<a class="text-danger" href="./dash"><?php echo $_SESSION['userName']; ?></a>&nbsp;
+						<a class="text-danger" href="./scripts/logout">Logout</a>&nbsp;
 					<?php } else { ?>
-						<a href="./login">Login</a>&nbsp;
+						<a class="text-danger" href="./login">Login</a>&nbsp;
 					<?php } ?>
 						</h6>
 					</div>	
