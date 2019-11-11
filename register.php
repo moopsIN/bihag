@@ -12,24 +12,31 @@
 	require_once("header.php");
 ?>
 
-<section>
+<section class="mt-3">
 	<div class="container">
 		<div class="row text-center">
-			<h3>Register at <?php echo $siteName; ?></h3>
-			<p style="color:red"><?php echo $message; ?></p>
+			<h3 class="col-12">Register At <?php echo $siteName; ?></h3>
+			<span  class="col-12 text-danger font-weight-bold"><?php echo $message; ?></span>
 		</div>
-		
-		<div class="row text-center"><hr></div>
+
 		<div class="row text-center">
-			<div class="col-sm-4 col-xs-1">&nbsp;</div>
-			<div class="col-sm-4 col-xs-10">
+			
+			<div class="col-12 col-sm-8 col-md-4 mx-auto my-4">
 				<form action="./scripts/registerUser.php" method="post">
-					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
-					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
-					<div class="row"><input type="submit" value="Register"/></div>
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="text" name="username" placeholder="Username" required/></div>
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="email" name="email" placeholder="Email Address" required/></div>
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="password" name="passcode" placeholder="Password" required/></div>
+					<div class="row my-2"><input class="mx-auto col-6" type="submit" value="Register"/></div>
 				</form>
 			</div>
-			<div class="col-sm-4 col-xs-1">&nbsp;</div>
+			
+		</div>
+
+		<div class="row text-center">
+			<div class="col-12 col-sm-8 col-md-4 mx-auto my-1">
+				<h1>OR</h1>
+				<a href="/login" class="border border-success rounded py-2 px-3 text-info">Login</a>
+			</div>
 		</div>
 	</div>
 </section>

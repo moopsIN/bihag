@@ -38,6 +38,13 @@
 			</div>
 			
 		</div>
+
+		<div class="row text-center">
+			<div class="col-12 col-sm-8 col-md-4 mx-auto my-1">
+				<h1>OR</h1>
+				<a href="/register" class="border border-success rounded py-2 px-3 text-info">Register</a>
+			</div>
+		</div>
 	</div>
 </section>
 
