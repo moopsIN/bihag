@@ -29,22 +29,20 @@
 	</head>
 
 	<body>
-		<header>
-			<div class="container">
-				
-				<div class="row">
-					<div class="col-sm-3">
+		<header class="bg-light pt-3 pb-0 align-bottom">
+			<div class="container">				
+				<div class="row pt-1">
+					<div class="col-sm-4">
 						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>
-					<div class="col-sm-5">
+					<div class="col-sm-4">
 						<form action="search.php" method="get" id="search">
-							<input type="text" name="query" placeholder="Search Bihag" class="col-xs-8" required/>
-							<input type="submit" class="col-xs-4" value="SEARCH">
+							<input type="text" name="query" placeholder="Search Bihag"  required/>
+							<input type="submit" value="SEARCH" style="position: absolute; left: -9999px">
 						</form>
 					</div>				
-					<div class="col-sm-4 text-right">
-
-						<h4>
+					<div class="col-sm-4 text-right pt-2">
+						<h6>
 						<a href="./">Home</a>&nbsp;
 					<?php if(isset($_SESSION['validate']) && $_SESSION['validate']) { ?>
 						<a href="./dash"><?php echo $_SESSION['userName']; ?></a>&nbsp;
@@ -52,7 +50,7 @@
 					<?php } else { ?>
 						<a href="./login">Login</a>&nbsp;
 					<?php } ?>
-						</h4>
+						</h6>
 					</div>	
 				</div>
 				<div class="row"><hr></div>
