@@ -18,7 +18,7 @@
 
 <section class="mt-4 px-2">
 	<div class="container">
-		<div class="row">
+		<div class="row my-4">
 			<h3><code class="bg-info text-light px-2 mx-2 font-weight-light rounded"><small><?php echo $thread->get_thread_primary_tag(); ?></small></code><?php echo $thread->get_thread_title(); ?></h3>
 
 		</div>
@@ -86,16 +86,23 @@
 	} else {
 ?>
 
-		<div class="row">
-			<div class="col-sm-12 text-center"><h4>You Must Login First</h4></div>
+		<div class="row text-center">
+		
+			<div class="col-12 col-sm-8 col-md-4 mx-auto my-4">
+				<form action="<?php echo $WEB_ROOT; ?>/scripts/loginAuthenticate.php" method="post">
 
-			<form action="./scripts/loginAuthenticate.php" class="mt-sm-3" method="post">
-					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
-					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
+						<strong>You Must Login To Reply</strong>
+						
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="text" name="username" placeholder="Username" required/></div>
+
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="password" name="passcode" placeholder="Password" required/></div>
+
 					<input type="hidden" name="redirect" value="<?php echo $_SERVER['REQUEST_URI']; ?>">
-					<div class="row"><input type="submit" value="Login"/></div>
-			</form>
 
+					<div class="row my-3"><input class="mx-auto col-6" type="submit" value="Login"/></div>
+				</form>
+			</div>
+			
 		</div>
 		
 <?php

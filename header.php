@@ -35,7 +35,7 @@
 					</div>
 					<div class="col-12 col-sm-4">
 						<form action="search.php" method="get" id="search">
-							<input class="col-12 mx-auto border border-success rounded" type="text" name="query" placeholder="Search Bihag"  required/>
+							<input class="col-12 py-2 mx-auto border border-success rounded" type="text" name="query" placeholder="Search Bihag"  required/>
 							<input type="submit" value="SEARCH" style="position: absolute; left: -9999px">
 						</form>
 					</div>				
