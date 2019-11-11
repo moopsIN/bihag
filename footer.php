@@ -1,10 +1,9 @@
 	<footer>
-		<div class="container">
-			<div class="row"><hr></div>
-			<div class="row text-center">
-				<h5 class="text-primary">Powered with Bihag by Moops</h5>
+		<div class="container my-3">
+			<hr class="col-6 col-sm-4 col-md-2 mx-auto">
+			<div class="row">
+				<small class="mx-auto text-danger">Powered with Bihag by Moops</small>
 			</div>
-			<div class="row"><hr></div>
 		</div>
 	</footer>
 	</body>

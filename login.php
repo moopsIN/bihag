@@ -16,25 +16,27 @@
 	require_once('header.php');
 ?>
 
-<section>
+<section class="mt-3">
 	<div class="container">
 		<div class="row text-center">
-			<h3>Login to <?php echo $siteName; ?></h3>
-			<p style="color:red"><?php echo $message; ?></p>
+			<h3 class="col-12">Login to <?php echo $siteName; ?></h3>
+			<span  class="col-12 text-danger font-weight-bold"><?php echo $message; ?></span>
 		</div>
 		
-		<div class="row text-center"><hr></div>
 		<div class="row text-center">
-			<div class="col-sm-4 col-xs-1">&nbsp;</div>
-			<div class="col-sm-4 col-xs-10">
+			
+			<div class="col-12 col-sm-8 col-md-4 mx-auto my-4">
 				<form action="<?php echo $WEB_ROOT; ?>/scripts/loginAuthenticate.php" method="post">
-					<div class="row"><input type="text" name="username" placeholder="Username" required/></div><br>
-					<div class="row"><input type="password" name="passcode" placeholder="Password" required/></div><br>
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="text" name="username" placeholder="Username" required/></div>
+
+					<div class="row my-3"><input class="mx-auto col-10 border border-warning py-2 rounded" type="password" name="passcode" placeholder="Password" required/></div>
+
 					<input type="hidden" name="redirect" value="/dash">
-					<div class="row"><input type="submit" value="Login"/></div>
+
+					<div class="row my-3"><input class="mx-auto col-6" type="submit" value="Login"/></div>
 				</form>
 			</div>
-			<div class="col-sm-4 col-xs-1">&nbsp;</div>
+			
 		</div>
 	</div>
 </section>

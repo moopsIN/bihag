@@ -41,7 +41,7 @@
 	
 	foreach ($threadList as $thread) {
 			echo "<div class='row py-3 px-3'>";
-			echo "<a href='./topic?id=".$thread['threadID']."' class='text-danger'>".$thread['threadTitle']."</a>";
+			echo "<a href='./topic?id=".$thread['threadID']."' class='text-danger'><code class='bg-info text-white px-1 mr-1  rounded'><small>". $thread['threadPrimaryTag'] . "</small></code>" .$thread['threadTitle']."</a>";
 			echo "</div>";			
 	}
 ?>

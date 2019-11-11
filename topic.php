@@ -16,44 +16,43 @@
 	require_once('header.php');
 ?>
 
-<section class="mt-4">
+<section class="mt-4 px-2">
 	<div class="container">
 		<div class="row">
-			<h3><?php echo $thread->get_thread_title(); ?></h3>
+			<h3><code class="bg-info text-light px-2 mx-2 font-weight-light rounded"><small><?php echo $thread->get_thread_primary_tag(); ?></small></code><?php echo $thread->get_thread_title(); ?></h3>
 
 		</div>
-		<div class="row text-center"><hr></div>
-		<div class="row">
-			<p class="col-6"><?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "' class='text-danger'><img src='./assets/img/".$author['id'].".jpg' class='rounded-circle col-3 col-sm-2 col-md-2' />".$author['name']."</a>"; ?></p>
-		</div>
-		<div class="row">
-			<p class="py-sm-3 py-xs-1"><?php echo $thread->get_thread_body(); ?></p>
-		</div>
 		
-		<div class="row">
+		<div class="row pr-3 align-text-bottom">
 			<div class="col-6">
-				<code class="bg-info text-light py-1 px-2 rounded"><?php echo $thread->get_thread_primary_tag(); ?></code>
+				<?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "' class='text-danger'><img src='./assets/img/".$author['id'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$author['name']."</a>"; ?>
 			</div>
 			<div class="col-6 text-right">
 				<small><strong><?php echo humanTiming(strtotime($thread->get_thread_create_time())) . " ago"; ?></small></strong>
 			</div>
 		</div>
+		<div class="row">
+			<p class="py-sm-3 py-xs-1"><?php echo $thread->get_thread_body(); ?></p>
+		</div>
+		
+		
 		<hr class="col-12 p-0">
 	</div>
 </section>
 
-<section>
+<section class="mt-4 px-2">
 	<div class="container">		
 <?php	
 	foreach ($postList as $post) {			
-			echo "<div class='row' id='".$post['postID']."'>";
-			echo "<div class='col-xs-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "' class='text-danger'><img src='./assets/img/".$post['userID'].".jpg' class='rounded-circle col-xs-3 col-sm-2 col-md-2' />".$post['username']."</a></div>";
+			echo "<div class='row pr-3' id='".$post['postID']."'>";
+			echo "<div class='col-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "' class='text-danger'><img src='./assets/img/".$post['userID'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$post['username']."</a></div>";
+			echo "<div class='col-6 text-right'><small><strong>". humanTiming(strtotime($post['time'])) ." ago</small></strong></div>";
 			echo "</div>";
 			echo "<div class='row'>";
-			echo "<p class='py-sm-3 py-xs-1'>".$post['postBody']."</p>";
+			echo "<p class='py-sm-3 py-1'>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
-			echo "<div class='col-12 text-right'><small><strong>". humanTiming(strtotime($post['time'])) ." ago</small></strong></div>";
+			
 			
 			echo "</div>";
 			echo "<hr class='col-12 p-0'>";		
@@ -62,22 +61,25 @@
 	</div>
 </section>
 
-<section>
+<section class="mt-4 px-2">
 	<div class="container">
 		<div class="row">
-			<h4>Reply To This Thread:</h4>
+			
 		</div>
 <?php
 	if(bhg_session::isLoggedIn()) {		
 ?>
 		<div class="row">
-			<form action="scripts/postReply.php" method="post">
-			<div class="col-sm-1">&nbsp;</div>		
-					<textarea id ="bihagtextarea" class="col-sm-8" rows="5" name="replyPost" placeholder="Type Your Post Here" required> </textarea>
+			
+			<form action="scripts/postReply.php" method="post" class="col-12 col-sm-10 col-md-10 mx-auto mt-3">
+
+				<h4 class="mb-2">Reply To This Thread:</h4>
+				
+					<textarea id ="bihagtextarea" rows="5" name="replyPost" placeholder="Type Your Post Here" required> </textarea>
 					<input type="hidden" name="user" value="<?php echo $_SESSION['userID']; ?>">
 					<input type="hidden" name="thread" value="<?php echo $id; ?>">
-					<input class="col-sm-2" type="submit" value="Post">
-			<div class="col-sm-1">&nbsp;</div>
+					<input type="submit" value="Post">
+			
 			</form>
 		</div>
 <?php

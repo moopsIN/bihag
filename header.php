@@ -15,10 +15,8 @@
   			tinymce.init({
     			selector: '#bihagtextarea',
     			menubar: false,
-    			plugins: ["autolink codesample hr link lists wordcount"],
-    			toolbar: 'undo redo | h2 h3 | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | wordcount',
-    			width: '80%',
-    			min_width: '300px'
+    			plugins: ["autolink codesample hr link lists wordcount preview"],
+    			toolbar: 'undo redo | h2 h3 | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | preview',
   			});
   		</script>
 
@@ -32,16 +30,16 @@
 		<header class="bg-light pt-3 pb-0 align-bottom">
 			<div class="container">				
 				<div class="row pt-1">
-					<div class="col-sm-4">
-						<h3><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
+					<div class="col-12 col-sm-4 text-center text-sm-left">
+						<h3 class="font-weight-bold"><a href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>
-					<div class="col-sm-4">
+					<div class="col-12 col-sm-4">
 						<form action="search.php" method="get" id="search">
-							<input type="text" name="query" placeholder="Search Bihag"  required/>
+							<input class="col-12 mx-auto border border-success rounded" type="text" name="query" placeholder="Search Bihag"  required/>
 							<input type="submit" value="SEARCH" style="position: absolute; left: -9999px">
 						</form>
 					</div>				
-					<div class="col-sm-4 text-right pt-2">
+					<div class="col-12 col-sm-4 text-center text-sm-right pt-2">
 						<h6>
 						<a href="./">Home</a>&nbsp;
 					<?php if(isset($_SESSION['validate']) && $_SESSION['validate']) { ?>
