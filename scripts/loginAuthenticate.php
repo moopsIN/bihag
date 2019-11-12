@@ -12,9 +12,16 @@
 
 		if ($isAuthentic['valid']) {			
 			include_once('../inc/session.php');
-			bhg_session::initialize($_POST['username'],$isAuthentic['id']);
-			$redirectUrl = $_POST['redirect'];
-			header("Location:..".$redirectUrl);
+			bhg_session::initialize($_POST['username'],$isAuthentic['id'],$isAuthentic['level']);
+
+			if ($isAuthentic['level'] === 99) {
+				header("Location:../admin/");
+				exit();
+			} else {
+				$redirectUrl = $_POST['redirect'];
+				header("Location:..".$redirectUrl);
+				exit();
+			}
 
 		} else {			
 			header("Location: ../login?message=Invalid%20Credentials");

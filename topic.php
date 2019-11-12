@@ -17,7 +17,7 @@
 ?>
 
 <section class="mt-4 px-2">
-	<div class="container">
+	<div class="container border-bottom">
 		<div class="row my-4">
 			<h3><code class="bg-info text-light px-2 mx-2 font-weight-light rounded"><small><?php echo $thread->get_thread_primary_tag(); ?></small></code><?php echo $thread->get_thread_title(); ?></h3>
 
@@ -25,14 +25,14 @@
 		
 		<div class="row pr-3 align-text-bottom">
 			<div class="col-6">
-				<?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "' class='text-danger'><img src='./assets/img/".$author['id'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$author['name']."</a>"; ?>
+				<?php echo "<a href='" . $WEB_ROOT . "/user?name=" . $author['name'] . "' class='text-danger'><img src='./assets/img/".$author['id'].".jpg' class='rounded-circle col-5 col-sm-3 col-md-3 col-lg-2' />".$author['name']."</a>"; ?>
 			</div>
 			<div class="col-6 text-right">
 				<small><strong class='text-muted'><?php echo humanTiming(strtotime($thread->get_thread_create_time())) . " ago"; ?></small></strong>
 			</div>
 		</div>
-		<div class="row">
-			<p class="py-sm-3 py-xs-1"><?php echo $thread->get_thread_body(); ?></p>
+		<div class="row py-sm-3 py-xs-1 col-12 col-md-10 mx-auto">
+			<p><?php echo $thread->get_thread_body(); ?></p>
 		</div>
 
 		<?php if ($_SESSION['userID'] === $author['id']) { ?>
@@ -42,42 +42,35 @@
 		</div>
 
 		<?php }	?>
-		
-		
-		<hr class="col-12 p-0">
 	</div>
 </section>
 
 <section class="mt-4 px-2">
-	<div class="container">		
+	
+
 <?php	
-	foreach ($postList as $post) {			
-			echo "<div class='row pr-3' id='".$post['postID']."'>";
-			echo "<div class='col-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "' class='text-danger'><img src='./assets/img/".$post['userID'].".jpg' class='rounded-circle col-3 col-sm-3 col-md-3 col-lg-2' />".$post['username']."</a></div>";
+	foreach ($postList as $post) {
+			echo "<div class='container my-4 border-bottom'>	";		
+			echo "<div class='row' id='".$post['postID']."'>";
+			echo "<div class='col-6'><a href='" . $WEB_ROOT . "/user?name=" . $post['username'] . "' class='text-danger'><img src='./assets/img/".$post['userID'].".jpg' class='rounded-circle col-5 col-sm-3 col-md-3 col-lg-2' />".$post['username']."</a></div>";
 			echo "<div class='col-6 text-right'><small><strong class='text-muted'>". humanTiming(strtotime($post['time'])) ." ago</small></strong></div>";
 			echo "</div>";
-			echo "<div class='row'>";
-			echo "<p class='py-sm-3 py-1'>".$post['postBody']."</p>";
+			echo "<div class='row py-sm-3 py-1 col-12 col-md-10 mx-auto'>";
+			echo "<p>".$post['postBody']."</p>";
 			echo "</div>";
 			echo "<div class='row'>";
 
 			if ($_SESSION['userID'] === $post['userID']) {
 
-			echo "<div class='row'>";
-			echo "<p class='col-10 mx-auto text-right'><a href='#'>edit</a></p>";
-			echo "</div>";
-
-		}
+				echo "<div class='row'>";
+					echo "<p class='col-10 mx-auto text-right'><a href='#'>edit</a></p>";
+				echo "</div>";
+			}			
 			
-			
-			echo "</div>";
-			echo "<hr class='col-12 p-0'>";
-
-		
-		
+			echo "</div>";	
+			echo "</div>";	
 	}
 ?>		
-	</div>
 </section>
 
 <section class="mt-4 px-2">

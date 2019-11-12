@@ -16,7 +16,8 @@
     			selector: '#bihagtextarea',
     			menubar: false,
     			plugins: ["autolink codesample hr link lists wordcount preview"],
-    			toolbar: 'undo redo | h2 h3 | bold underline subscript superscript strikethrought | codesample hr | bullist numlist | link unlink | preview',
+    			toolbar: 'undo redo | h2 h3 | bold underline subscript superscript strikethrought hr | bullist numlist | link unlink | preview',
+    			contextmenu: false
   			});
   		</script>
 
@@ -27,9 +28,21 @@
 	</head>
 
 	<body>
-		<header class="shadow-sm bg-light pt-3 pb-0 align-bottom">
+		<header class="shadow-sm bg-light pb-0 p-0 m-0">
+
+<?php if(isset($_SESSION['isAdmin']) && $_SESSION['isAdmin']) { ?>
+		
+	<nav class="navbar navbar-expand-lg navbar-light bg-dark py-2">
+  		<div class="row px-2">
+  			<strong class="text-white">Hello <span class="text-danger"><?php echo $_SESSION['userName']; ?></span>! </strong> &emsp;
+  			<a class="text-white" href="./admin/">Manage</a> &emsp;
+  			<a class="text-white" href="./admin/">Stats</a>
+  		</div>
+	</nav>
+
+<?php } ?>
 			<div class="container">				
-				<div class="row pt-1">
+				<div class="row pt-2">
 					<div class="col-12 col-sm-4 text-center text-sm-left">
 						<h3><a class="text-info font-weight-bold" href="<?php echo $WEB_ROOT; ?>"><?php echo $siteName; ?></a> </h3>
 					</div>

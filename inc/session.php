@@ -11,12 +11,16 @@
 			# code...
 		}
 
-		function initialize($user, $id) {
+		function initialize($user, $id, $level) {
 			self::end();
 			self::start();
 
 			$_SESSION['userName'] = $user;
 			$_SESSION['userID'] = $id;
+			$_SESSION['isAdmin'] = false;
+
+			if ($level === 99) $_SESSION['isAdmin'] = true;
+
 			$_SESSION['id'] = session_id();
 			$_SESSION['lastActive'] = time();
 			$_SESSION['validate'] = true;
@@ -38,7 +42,7 @@
 
 		function refresh() {
 			session_regenerate_id();
-			$_SESSION['id'] = session_id();			
+			$_SESSION['id'] = session_id();		
 		}
 
 		function isValid() {

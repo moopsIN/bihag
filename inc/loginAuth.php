@@ -21,7 +21,8 @@
 
 			if ($result->num_rows == 1) {
 				$row = $result->fetch_assoc();
-				$userID = $row['id'];
+				$userID = intval($row['id']);
+				$userLevel = intval($row['level']);
 
 				$sql = "SELECT * FROM auth WHERE id='".$userID."'";
 				$result = bhg_db_connect::sqlQuery($sql);
@@ -34,21 +35,22 @@
 				if(password_verify($passcode, self::$hash)) {
 					$login['valid'] = true;
 					$login['id'] = $userID;
-					return $login;
+					$login['level'] = $userLevel;					
 				}
 				else {
 					$login['valid'] = false;
 					$login['id'] = NULL;
-					return $login;
+					$login['level'] = NULL;					
 				}
 
 			} else {
 				bhg_db_connect::close();
 				$login['valid'] = false;
 				$login['id'] = NULL;
-				return $login;
+				$login['level'] = NULL;
+				
 			}
-						
+		  return $login;			
 		}
 	} //end of bhg_authenticate
 

@@ -171,6 +171,7 @@
 		private $totalThreads;
 		private $listOfThreads = array();
 		private $listOfPosts;
+		private $userLevel = 0;
 
 		function __construct($name) {
 			bhg_db_connect::initialize();
@@ -181,7 +182,8 @@
 			if ($result->num_rows == 1) {
 				$row = $result->fetch_assoc();
 				$this->userName = $row['username'];
-				$this->userID = $row['id'];				
+				$this->userID = intval($row['id']);
+				$this->userLevel = intval($row['level']);				
 			}
 
 			$sql = "SELECT * FROM threads WHERE threadAuthor='".$this->userID."'";
@@ -212,6 +214,10 @@
 
 		function get_user_thread_list() {
 			return $this->listOfThreads;
+		}
+
+		function get_user_level() {
+			return $this->userLevel;
 		}
 	} //end of bhg_user	
 
