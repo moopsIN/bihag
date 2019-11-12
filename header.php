@@ -36,7 +36,7 @@
   		<div class="row px-2">
   			<strong class="text-white">Hello <span class="text-danger"><?php echo $_SESSION['userName']; ?></span>! </strong> &emsp;
   			<a class="text-white" href="./admin/">Manage</a> &emsp;
-  			<a class="text-white" href="./admin/">Stats</a>
+  			<a class="text-white" href="./admin/stats">Stats</a>
   		</div>
 	</nav>
 
