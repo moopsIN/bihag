@@ -31,10 +31,13 @@
 		<header class="shadow-sm bg-light pb-0 p-0 m-0">
 				<nav class="navbar navbar-expand-lg navbar-light bg-dark py-2">
   					<div class="row px-2">
+
   						<strong class="text-white">Hello <span class="text-danger"><?php echo $_SESSION['userName']; ?></span>! </strong> &emsp;
   						<a class="text-white" href="./">Manage</a> &emsp;
   						<a class="text-white" href="./stats">Stats</a> &emsp;
+  						<a class="text-white" href="../logout">Logout</a> &emsp;
   						<a class="text-warning" href="/"><?php echo $siteName; ?></a>
+
   					</div>
 				</nav>
 		</header>
