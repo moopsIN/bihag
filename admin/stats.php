@@ -28,22 +28,27 @@
 	</div>
 
 	<div class="container">
-		<table class="table text-center col-12 col-sm-10 col-md-8 col-lg-6 mx-auto my-4">
+		<table class="table col-12 col-sm-6 col-md-4 col-lg-3 px-1">
 			<thead>
 				<tr>
-					<th scope="col">Users</th>
-					<th scope="col">Threads</th>
-					<th scope="col">Replies</th>
+					<h3 class="text-info">Mini Stats</h3>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
+					<th scope="row">Users</th>
 					<td><?php echo $statHandler->get_total_users($token); ?></td>
+				</tr>
+				<tr>
+					<th scope="row">Threads</th>
 					<td><?php echo $statHandler->get_total_threads($token); ?></td>
+				</tr>
+				<tr>
+					<th scope="row">Posts</th>
 					<td><?php echo $statHandler->get_total_posts($token); ?></td>
 				</tr>
 			</tbody>
-		</table>	
+		</table>
 	</div>
 </section>
 
