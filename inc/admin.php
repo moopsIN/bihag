@@ -27,6 +27,7 @@
 		private $totalUsers = NULL;
 		private $totalThreads = NULL;
 		private $totalPosts = NULL;
+		private $threadList = NULL;
 		
 		function __construct($id)
 		{
@@ -89,6 +90,14 @@
 			if ($token !== $this->adminToken) return NULL;
 
 			return $this->totalPosts;
+		}
+
+		function get_list_of_threads ($token) {
+			if ($token !== $this->adminToken) return NULL;
+			$this->threadList = array();
+			$threadListHandler = new bhg_list_threads;
+			$this->threadList = $threadListHandler->get_thread_list("all");
+			return $this->threadList;
 		}
 	}
 ?>

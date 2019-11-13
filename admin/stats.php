@@ -20,6 +20,8 @@
 	$statHandler = new bhg_admin_stats($user->get_user_id());
 	$token = $statHandler->get_admin_token($user->get_user_id());
 
+	$threads = $statHandler->get_list_of_threads($token);
+
 	require_once ('admin-header.php');
 ?>
 <section class="py-3">
@@ -50,6 +52,24 @@
 			</tbody>
 		</table>
 	</div>
+</section>
+
+<section class="py-2">
+	<div class="container">
+		<div class="row">
+			<div class="col-10 col-md-8 mx-auto d-inline-block vh-100 overflow-auto">
+				<h4 class="text-center">All Threads</h4>
+<?php foreach ($threads as $thread) { ?>
+				<div class="row px-2 py-1">
+					<?php echo "<p><span class='border rounded py1 px-2 bg-secondary text-white'>" . $thread['threadPrimaryTag'] . "</span> " . $thread['threadTitle'] . "</p>";  ?> 
+				</div>	
+<?php } ?>
+			</div>
+			<div class="col-10 col-md-4 mx-auto text-center d-inline-block border-left">
+				<h4>All Users</h4>
+			</div>
+		</div>
+	</div>	
 </section>
 
 
